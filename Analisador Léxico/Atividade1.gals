@@ -1,0 +1,32 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Hardcode
+Input = Stream
+#RegularDefinitions
+L: [a-zA-Z]
+N: [0-9]
+S: [_]
+COMMENT : [#]
+#Tokens
+"+"
+"-"
+"*"
+"/"
+">"
+"<"
+">="
+"<="
+"=="
+"!="
+ : [\s\t\n\r]*
+NUMERO: {N}+
+ID: {L}({L}|{N}|{S})*
+ :! {COMMENT}({L}|{N}|{S})*
+if = ID : "if"
+print = ID :"print"
+int = ID : "int"
+
