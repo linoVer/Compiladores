@@ -1,0 +1,10 @@
+2+2
+#testedecomentario
+a2
+a2+
+2e
+
+#erros
+_a
+_2
+
