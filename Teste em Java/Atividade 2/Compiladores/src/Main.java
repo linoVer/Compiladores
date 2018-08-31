@@ -13,15 +13,16 @@ public class Main {
 		Sintatico sint = new Sintatico();
 		Semantico sem = new Semantico();
 
-		Token t;
-		
-		System.out.println("Lex: \n");
-		while(( t = lex.nextToken()) != null) {
-			System.out.println(t.toString());
-		}
+//		Token t;
+//		
+//		System.out.println("Lex: \n");
+//		while(( t = lex.nextToken()) != null) {
+//			System.out.println(t.toString());
+//		}
 		
 		System.out.println("Sint: \n");
 		sint.parse(lex, sem);
+		
 
 
 	}
