@@ -1,0 +1,64 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+ScannerCaseSensitive = true
+ScannerTable = Hardcode
+Input = Stream
+Parser = LL
+#RegularDefinitions
+L    : [a-zA-Z]
+N    : [0-9]
+S    : [_]
+COMMENT    : "/*" [^ "*" ]* "*/"
+
+#Tokens
+"+"
+"-"
+"<"
+";"
+"{"
+"}"
+"("
+")"
+"="
+ :     	[\s\t\n\r]*
+NUMERO:  {N}+
+ID:     	{L}+
+ :!     	{COMMENT}
+if     	= ID : "if"
+else     = ID : "else"
+do     	= ID : "do"
+while    = ID : "while"
+
+#NonTerminals
+<program>
+<statement>
+<statement2>
+<paren_expr>
+<expr>
+<expr2>
+<term>
+<id>
+<int>
+<key>
+
+#Grammar
+<program>	::= <statement>;
+<key> 		::= <statement><key> | î;
+<statement> 	::= <statement2> |
+         	 	while <paren_expr> <statement> 
+			|do <statement> while <paren_expr> ";" 
+			|"{"  <statement><key>  "}" | <expr> ";" | ";";
+<statement2> 	::= if <paren_expr><statement> | else <statement>;                  
+<paren_expr> 	::= "(" <expr> ")";
+<expr>  		::= <term><expr2> | <id><expr2>;
+<expr2> 		::= "=" <expr> | "+" <expr> | "-" <expr> 
+			| "<" <expr> | î;
+<term> 		::= <int> | <paren_expr>;
+<id> 		::= ID;
+<int> 		::= NUMERO;
+
