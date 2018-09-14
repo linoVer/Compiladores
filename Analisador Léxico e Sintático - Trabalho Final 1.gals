@@ -5,6 +5,7 @@ Language = Java
 ScannerName = Lexico
 ParserName = Sintatico
 SemanticName = Semantico
+Package = trabalhoFinal
 ScannerCaseSensitive = true
 ScannerTable = Hardcode
 Input = Stream
