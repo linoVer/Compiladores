@@ -47,16 +47,17 @@ while    = ID : "while"
 <int>
 <key>
 
+
 #Grammar
 <program>	::= <statement>;
 <key> 		::= <statement><key> | î;
-<statement> 	::= <statement2> |
+<statement> 	::= if <paren_expr><statement><statement2> | 
          	 	while <paren_expr> <statement> 
 			|do <statement> while <paren_expr> ";" 
-			|"{"  <statement><key>  "}" | <expr> ";" | ";";
-<statement2> 	::= if <paren_expr><statement> | else <statement>;                  
+			|"{"  <statement><key>  "}" | <expr>";" | ";";
+<statement2> 	::= else <statement> | î;                 
 <paren_expr> 	::= "(" <expr> ")";
-<expr>  		::= <term><expr2> | <id><expr2>;
+<expr>  		::= <term><expr2> | <id><expr2> ;
 <expr2> 		::= "=" <expr> | "+" <expr> | "-" <expr> 
 			| "<" <expr> | î;
 <term> 		::= <int> | <paren_expr>;
